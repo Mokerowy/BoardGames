@@ -1,0 +1,382 @@
+.wrapper {
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  background-color: rgb(126, 2, 2);
+}
+
+.nav {
+  z-index: 100;
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10em;
+  background-color: darkred;
+  background-image: linear-gradient(45deg, darkred 0 50%, rgba(255, 228, 196, 0.6));
+}
+
+.mobileNav {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  transform: translateX(100%);
+  transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+  background-color: royalblue;
+  z-index: 100;
+}
+.mobileNav--active {
+  transform: translateX(0);
+}
+.mobileNav__item {
+  position: relative;
+  display: block;
+  margin: 0.5em 0;
+  padding: 0.5em 2em;
+  font-size: 2.8rem;
+  color: white;
+  text-decoration: none;
+}
+.mobileNav__item::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  transform: scaleY(0);
+  background-color: white;
+  transition: transform 0.5s;
+  content: "";
+}
+.mobileNav__item:hover::before {
+  transform: scaleY(1);
+}
+
+.burger-btn {
+  display: none;
+  position: fixed;
+  right: 2rem;
+  padding: 1em;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  z-index: 1000;
+}
+.burger-btn:focus {
+  outline: none;
+  border: 2px solid bisque;
+  border-radius: 8px;
+}
+.burger-btn:hover .burger-btn__bars::after,
+.burger-btn:hover .burger-btn__bars::before {
+  width: 100%;
+}
+.burger-btn__box {
+  position: relative;
+  width: 40px;
+  height: 30px;
+}
+.burger-btn__bars, .burger-btn__bars::after, .burger-btn__bars::before {
+  position: absolute;
+  right: 0;
+  height: 3px;
+  content: "";
+  background-color: bisque;
+  transition: width 0.3s;
+  border-radius: 10px;
+}
+.burger-btn__bars {
+  width: 100%;
+}
+.burger-btn__bars::after {
+  width: 60%;
+  top: 13px;
+}
+.burger-btn__bars::before {
+  width: 30%;
+  top: 27px;
+  transition-delay: 0.1s;
+}
+
+.nav__item {
+  position: relative;
+  margin: 1rem;
+  padding: 2.5rem 4.5rem;
+  background: none;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  color: bisque;
+  font-size: 2.8rem;
+  text-shadow: 2px 2px black;
+  font-family: "Permanent Marker", cursive;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.nav__item::before,
+.nav__item::after {
+  display: block;
+  position: absolute;
+  content: "";
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.border,
+.mobileBorder {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  transition: 0.8s;
+}
+
+.border::after,
+.border::before,
+.mobileBorder::after,
+.mobileBorder::before {
+  width: 100%;
+  height: 100%;
+}
+
+.border::after,
+.mobileBorder::after {
+  bottom: 0;
+  right: 0;
+}
+
+.border::before,
+.mobileBorder::before {
+  top: 0;
+  left: 0;
+}
+
+.border:hover,
+.mobileBorder:hover {
+  border: -1px solid transparent;
+  color: saddlebrown;
+  box-shadow: 1px 2px 0 0 saddlebrown, inset 11px 6px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 200px;
+}
+
+.main {
+  position: absolute;
+  top: 16.5vh;
+  width: 100%;
+}
+
+.board__section {
+  background-color: rgb(114, 43, 15);
+}
+
+.section {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boardGames {
+  background-color: aliceblue;
+  width: 50vw;
+  height: 50vh;
+}
+
+.stones {
+  height: 90rem;
+  width: 100%;
+  background-image: url("../img/stones.JPG");
+  background-size: cover;
+  background-position: center;
+}
+
+.stonesColor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(126, 2, 2, 0.3);
+  transition: background-color, opacity 1s;
+}
+
+.stonesColor:hover {
+  opacity: 0;
+}
+
+.stonesText {
+  font-size: 13rem;
+  color: orange;
+  text-align: center;
+  border-radius: 8px;
+  color: bisque;
+  font-size: 5.8rem;
+  text-shadow: 2px 2px black;
+  font-family: "Permanent Marker", cursive;
+  text-decoration: none;
+}
+
+.green {
+  height: 2000px;
+  width: 100%;
+  background-color: rgb(126, 2, 2);
+}
+
+.boardGamesOne {
+  width: 100vw;
+  height: 200px;
+  background-color: purple;
+  z-index: 10000;
+}
+
+.islands__card {
+  position: relative;
+  margin: 1em 0;
+  height: 450px;
+  color: white;
+  text-align: center;
+  perspective: 1000px;
+}
+.islands__card:hover .islands__card-img {
+  transform: rotateY(-180deg);
+  opacity: 0;
+}
+.islands__card:hover .islands__card-info {
+  transform: rotateY(0);
+  opacity: 1;
+}
+.islands__card-img {
+  padding: 2em;
+  height: 100%;
+  border-radius: 8px;
+  background-size: cover;
+  transition: transform 1s, opacity 1s;
+}
+.islands__card-img--first {
+  background-color: orange;
+  background-image: yellow, url("../img/jelonek/DSC_0927.JPG");
+}
+.islands__card-img--secound {
+  background-color: orange;
+  background-image: yellow, url("../img/jelonek/DSC_0928.JPG");
+}
+.islands__card-img--third {
+  background-color: orange;
+  background-image: yellow, url("../img/jelonek/DSC_0931.JPG");
+}
+.islands__card-img-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.8rem;
+}
+.islands__card-img-info {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-size: 1.8rem;
+}
+.islands__card-img-info i {
+  margin-right: 0.3em;
+}
+.islands__card-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: yellow;
+  border-radius: 8px;
+  opacity: 0;
+  transform: rotateY(180deg);
+  transition: transform 1s, opacity 1s;
+}
+.islands__card-info-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1.2em;
+  font-family: "Dancing Script", cursive;
+  font-size: 2.8rem;
+}
+.islands__card-info-list {
+  margin: 0 auto;
+  width: 70%;
+  list-style: none;
+}
+.islands__card-info-list-item {
+  padding: 1em;
+  font-size: 1.4rem;
+  border-bottom: 1px solid yellow;
+}
+.islands__card-info-list-item:last-child {
+  border-bottom: none;
+}
+.islands__card-info-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2em;
+  padding: 1em;
+  border-radius: 8px;
+  width: 80%;
+  border: none;
+  background-color: green;
+  cursor: pointer;
+}
+.islands__card-info-btn::before {
+  background-color: greenyellow;
+}
+
+@media (max-width: 992px) {
+  .nav {
+    height: 20vh;
+  }
+  .border {
+    margin: 0.3rem;
+    padding: 3.3rem 2.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .border {
+    transition: 1s;
+    display: none;
+  }
+  .burger-btn {
+    display: block;
+  }
+}
+@media (max-width: 576px) {
+  .burger-btn {
+    padding: 0.5rem;
+  }
+}/*# sourceMappingURL=main.css.map */
